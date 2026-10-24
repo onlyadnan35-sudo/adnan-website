@@ -1,34 +1,296 @@
+
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>ADNAN Social Hub</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ADNAN | Social Hub</title>
 <style>
-*{box-sizing:border-box}body{margin:0;background:#040916;color:#f5f8ff;font-family:Arial,Tahoma,sans-serif}header{padding:20px 5%;display:flex;justify-content:space-between;align-items:center;gap:15px;flex-wrap:wrap;background:#071225;border-bottom:1px solid #16335b;position:sticky;top:0}header strong{font-size:25px;color:#42e8ff}nav{display:flex;gap:16px;flex-wrap:wrap}a{color:inherit;text-decoration:none}nav a:hover{color:#42e8ff}.hero{text-align:center;padding:65px 15px 45px;background:radial-gradient(ellipse at top,#222064,#040916 70%)}.hero .crown{font-size:38px;color:#42e8ff}.hero h1{font-size:clamp(44px,9vw,78px);margin:8px;color:white;text-shadow:0 0 25px #147bff}.hero p{color:#b8c9ed}.search{display:flex;max-width:650px;margin:0 auto;padding:10px;gap:8px;background:#0a1930;border:1px solid #1c3c68;border-radius:16px}.search input{flex:1;min-width:0;background:transparent;color:white;border:0;outline:0;padding:10px;font-size:16px}.search button{border:0;border-radius:10px;padding:10px 20px;background:linear-gradient(120deg,#812bff,#008ee9);color:white;cursor:pointer}.wrap{max-width:1200px;margin:25px auto;padding:0 16px}.wrap h2{font-size:22px}.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}.card{background:linear-gradient(145deg,#0d1c34,#07101f);border:1px solid #173357;border-radius:18px;padding:22px 8px;text-align:center;transition:.2s}.card:hover{transform:translateY(-4px);border-color:#42e8ff;box-shadow:0 0 22px #087bff30}.logo{width:54px;height:54px;object-fit:contain;display:block;margin:0 auto 12px}.card strong{display:block;font-size:15px}.card small{display:block;color:#91a9c8;margin-top:7px}.tools{display:flex;gap:12px;flex-wrap:wrap}.tools a{background:#0a1930;border:1px solid #173357;border-radius:12px;padding:14px 18px}.tools a:hover{border-color:#42e8ff}footer{text-align:center;color:#8da6c8;padding:30px 12px;border-top:1px solid #173357;margin-top:40px}.hidden{display:none!important}@media(max-width:800px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}}@media(max-width:520px){header{justify-content:center}nav{justify-content:center}.hero{padding-top:40px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.card{padding:18px 6px}.logo{width:48px;height:48px}}
+:root {
+  --bg:#080b14;
+  --card:#111827;
+  --blue:#38bdf8;
+  --purple:#8b5cf6;
+  --text:#f8fafc;
+  --muted:#94a3b8;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--bg);color:var(--text);
+  font-family:Arial,sans-serif;
+  background-image:radial-gradient(ellipse at top,#172554 0%,transparent 55%);
+}
+header{
+  position:sticky;top:0;z-index:10;
+  display:flex;justify-content:space-between;align-items:center;
+  gap:15px;padding:18px 7%;
+  background:#080b14eF;border-bottom:1px solid #25304a;
+  backdrop-filter:blur(15px);
+}
+.logo{font-size:25px;font-weight:900;letter-spacing:2px}
+.logo span{color:var(--blue)}
+nav{display:flex;gap:18px;flex-wrap:wrap}
+nav a{color:#cbd5e1;text-decoration:none;font-size:14px}
+nav a:hover{color:var(--blue)}
+.hero{text-align:center;padding:75px 20px 40px}
+.tag{
+  display:inline-block;padding:8px 14px;border:1px solid #334155;
+  border-radius:30px;color:var(--blue);font-size:13px;
+  background:#0f172a;
+}
+h1{font-size:clamp(38px,7vw,70px);margin:22px 0 12px}
+h1 span{
+  background:linear-gradient(90deg,#38bdf8,#a78bfa);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.hero p{color:var(--muted);line-height:1.8}
+.search{
+  display:block;width:min(550px,90%);margin:28px auto;
+  padding:16px 20px;border-radius:14px;border:1px solid #334155;
+  background:#111827;color:white;font-size:16px;outline:none;
+}
+.search:focus{border-color:var(--blue);box-shadow:0 0 18px #38bdf833}
+.container{width:min(1100px,90%);margin:auto}
+.section{padding:30px 0 40px;scroll-margin-top:90px}
+.section-title{font-size:25px;margin-bottom:20px}
+.section-title span{color:var(--blue)}
+.grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+  gap:17px;
+}
+.card{
+  display:flex;align-items:center;gap:15px;padding:20px;
+  background:linear-gradient(145deg,#131c2e,#0d1320);
+  border:1px solid #243047;border-radius:18px;
+  text-decoration:none;color:white;transition:.25s;
+  min-height:100px;
+}
+.card:hover{
+  transform:translateY(-5px);border-color:var(--blue);
+  box-shadow:0 8px 30px #38bdf81a;
+}
+.card img{width:42px;height:42px;object-fit:contain}
+.fallback{
+  width:42px;height:42px;display:grid;place-items:center;
+  border-radius:12px;background:#1e293b;font-size:25px;
+}
+.card h3{margin:0 0 7px;font-size:17px}
+.card p{margin:0;color:var(--muted);font-size:12px}
+footer{
+  text-align:center;padding:35px 15px;color:var(--muted);
+  border-top:1px solid #202b40;margin-top:20px;line-height:2;
+}
+footer b{color:var(--blue)}
+.empty{display:none;color:var(--muted);padding:20px}
+#clock{color:var(--blue);font-size:14px;margin-top:20px}
+@media(max-width:600px){
+  header{padding:15px 5%;align-items:flex-start;flex-direction:column}
+  nav{gap:12px}
+  .hero{padding-top:48px}
+  .grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .card{padding:13px;gap:10px;min-height:90px}
+  .card img,.fallback{width:32px;height:32px}
+  .card h3{font-size:14px}
+  .card p{font-size:11px}
+}
 </style>
 </head>
 <body>
-<header><a href="#"><strong>♛ ADNAN</strong></a><nav><a href="#">الرئيسية</a><a href="#social">التواصل الاجتماعي</a><a href="#tools">أدوات مفيدة</a></nav></header>
-<section class="hero"><div class="crown">♛</div><h1>ADNAN</h1><p>أحلام كبيرة · طموحات أكبر</p><p>بوابتك لجميع مواقع التواصل الاجتماعي في مكان واحد</p></section>
-<main class="wrap" id="social"><form class="search" id="searchForm"><input id="q" placeholder="قلب على Instagram أو YouTube..." aria-label="بحث"><button>بحث</button></form><h2>✦ أشهر مواقع التواصل</h2><div class="grid" id="grid">
-<a class="card" data-key="instagram انستغرام صور" href="https://www.instagram.com/" target="_blank" rel="noopener"><img class="logo" src="https://cdn.simpleicons.org/instagram/E4405F" alt="Instagram"><strong>Instagram</strong><small>الصور والقصص</small></a>
-<a class="card" data-key="facebook فيسبوك" href="https://www.facebook.com/" target="_blank" rel="noopener"><img class="logo" src="https://cdn.simpleicons.org/facebook/0866FF" alt="Facebook"><strong>Facebook</strong><small>تواصل مع الأصدقاء</small></a>
-<a class="card" data-key="youtube يوتيوب فيديو" href="https://www.youtube.com/" target="_blank" rel="noopener"><img class="logo" src="https://cdn.simpleicons.org/youtube/FF0033" alt="YouTube"><strong>YouTube</strong><small>الفيديوهات</small></a>
-<a class="card" data-key="tiktok تيك توك" href="https://www.tiktok.com/" target="_blank" rel="noopener"><img class="logo" src="https://cdn.simpleicons.org/tiktok/FFFFFF" alt="TikTok"><strong>TikTok</strong><small>فيديوهات قصيرة</small></a>
-<a class="card" data-key="whatsapp واتساب" href="https://web.whatsapp.com/" target="_blank" rel="noopener"><img class="logo" src="https://cdn.simpleicons.org/whatsapp/25D366" alt="WhatsApp"><strong>WhatsApp</strong><small>الرسائل والمكالمات</small></a>
-<a class="card" data-key="x twitter تويتر" href="https://x.com/" target="_blank" rel="noopener"><img class="logo" src="https://cdn.simpleicons.org/x/FFFFFF" alt="X"><strong>X (Twitter)</strong><small>الأخبار والآراء</small></a>
-<a class="card" data-key="discord ديسكورد" href="https://discord.com/" target="_blank" rel="noopener"><img class="logo" src="https://cdn.simpleicons.org/discord/5865F2" alt="Discord"><strong>Discord</strong><small>المجتمعات</small></a>
-<a class="card" data-key="telegram تيليغرام" href="https://telegram.org/" target="_blank" rel="noopener"><img class="logo" src="https://cdn.simpleicons.org/telegram/26A5E4" alt="Telegram"><strong>Telegram</strong><small>الرسائل والقنوات</small></a>
-<a class="card" data-key="snapchat سناب شات" href="https://www.snapchat.com/" target="_blank" rel="noopener"><img class="logo" src="https://cdn.simpleicons.org/snapchat/FFFC00" alt="Snapchat"><strong>Snapchat</strong><small>اللحظات والقصص</small></a>
-<a class="card" data-key="pinterest بينترست" href="https://www.pinterest.com/" target="_blank" rel="noopener"><img class="logo" src="https://cdn.simpleicons.org/pinterest/BD081C" alt="Pinterest"><strong>Pinterest</strong><small>الأفكار والإلهام</small></a>
-<a class="card" data-key="linkedin لينكد ان" href="https://www.linkedin.com/" target="_blank" rel="noopener"><img class="logo" src="https://cdn.simpleicons.org/linkedin/0A66C2" alt="LinkedIn"><strong>LinkedIn</strong><small>العمل والتواصل المهني</small></a>
-<a class="card" data-key="reddit ريديت" href="https://www.reddit.com/" target="_blank" rel="noopener"><img class="logo" src="https://cdn.simpleicons.org/reddit/FF4500" alt="Reddit"><strong>Reddit</strong><small>المجتمعات والنقاشات</small></a>
-</div><p id="none" class="hidden">ما لقينا حتى موقع بهاد الاسم.</p>
-<h2 id="tools">✦ أدوات مفيدة</h2><div class="tools"><a href="https://www.google.com/" target="_blank" rel="noopener">🔎 Google</a><a href="https://mail.google.com/" target="_blank" rel="noopener">✉ Gmail</a><a href="https://translate.google.com/" target="_blank" rel="noopener">文 Translate</a><a href="https://chatgpt.com/" target="_blank" rel="noopener">✧ ChatGPT</a><a href="https://drive.google.com/" target="_blank" rel="noopener">▣ Google Drive</a><a href="https://www.wikipedia.org/" target="_blank" rel="noopener">📚 Wikipedia</a></div></main>
-<footer>♛ ADNAN © 2026 · بوابتك الرقمية</footer>
+
+<header>
+  <div class="logo">👑 ADNAN<span>.</span></div>
+  <nav>
+    <a href="#social">Social</a>
+    <a href="#ai">AI Tools</a>
+    <a href="#games">Games</a>
+    <a href="#web">Websites</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="tag">⚡ YOUR DIGITAL WORLD</div>
+  <h1>WELCOME TO <span>ADNAN</span></h1>
+  <p>كل المواقع اللي كتحتاج، مجموعة فبلاصة وحدة.<br>
+  Your world. Your links. Your rules.</p>
+  <div id="clock"></div>
+  <input id="search" class="search" type="search"
+    placeholder="🔎 قلب على شي موقع، لعبة أو أداة..." autocomplete="off">
+</section>
+
+<main class="container">
+
+<section class="section" id="social">
+  <h2 class="section-title">🌐 <span>Social</span> Media</h2>
+  <div class="grid">
+    <a class="card" href="https://www.youtube.com/" target="_blank" rel="noopener">
+      <img src="https://cdn.simpleicons.org/youtube/FF0033" alt="YouTube">
+      <div><h3>YouTube</h3><p>Videos & entertainment</p></div>
+    </a>
+    <a class="card" href="https://www.instagram.com/" target="_blank" rel="noopener">
+      <img src="https://cdn.simpleicons.org/instagram/E4405F" alt="Instagram">
+      <div><h3>Instagram</h3><p>Photos & reels</p></div>
+    </a>
+    <a class="card" href="https://www.tiktok.com/" target="_blank" rel="noopener">
+      <img src="https://cdn.simpleicons.org/tiktok/FFFFFF" alt="TikTok">
+      <div><h3>TikTok</h3><p>Discover trends</p></div>
+    </a>
+    <a class="card" href="https://www.facebook.com/" target="_blank" rel="noopener">
+      <img src="https://cdn.simpleicons.org/facebook/0866FF" alt="Facebook">
+      <div><h3>Facebook</h3><p>Connect with people</p></div>
+    </a>
+    <a class="card" href="https://discord.com/" target="_blank" rel="noopener">
+      <img src="https://cdn.simpleicons.org/discord/5865F2" alt="Discord">
+      <div><h3>Discord</h3><p>Communities & chat</p></div>
+    </a>
+    <a class="card" href="https://web.whatsapp.com/" target="_blank" rel="noopener">
+      <img src="https://cdn.simpleicons.org/whatsapp/25D366" alt="WhatsApp">
+      <div><h3>WhatsApp</h3><p>Messages & calls</p></div>
+    </a>
+    <a class="card" href="https://x.com/" target="_blank" rel="noopener">
+      <img src="https://cdn.simpleicons.org/x/FFFFFF" alt="X">
+      <div><h3>X / Twitter</h3><p>News & conversations</p></div>
+    </a>
+    <a class="card" href="https://www.reddit.com/" target="_blank" rel="noopener">
+      <img src="https://cdn.simpleicons.org/reddit/FF4500" alt="Reddit">
+      <div><h3>Reddit</h3><p>Explore communities</p></div>
+    </a>
+  </div>
+</section>
+
+<section class="section" id="ai">
+  <h2 class="section-title">🤖 <span>AI</span> Tools</h2>
+  <div class="grid">
+    <a class="card" href="https://chatgpt.com/" target="_blank" rel="noopener">
+      <img src="https://cdn.simpleicons.org/openai/FFFFFF" alt="OpenAI">
+      <div><h3>ChatGPT</h3><p>AI assistant</p></div>
+    </a>
+    <a class="card" href="https://gemini.google.com/" target="_blank" rel="noopener">
+      <span class="fallback">✨</span>
+      <div><h3>Google Gemini</h3><p>AI by Google</p></div>
+    </a>
+    <a class="card" href="https://claude.ai/" target="_blank" rel="noopener">
+      <span class="fallback">🧠</span>
+      <div><h3>Claude</h3><p>AI writing & ideas</p></div>
+    </a>
+    <a class="card" href="https://www.perplexity.ai/" target="_blank" rel="noopener">
+      <span class="fallback">🔍</span>
+      <div><h3>Perplexity</h3><p>AI search engine</p></div>
+    </a>
+    <a class="card" href="https://www.canva.com/" target="_blank" rel="noopener">
+      <img src="https://cdn.simpleicons.org/canva/00C4CC" alt="Canva">
+      <div><h3>Canva</h3><p>Design & creativity</p></div>
+    </a>
+    <a class="card" href="https://suno.com/" target="_blank" rel="noopener">
+      <span class="fallback">🎵</span>
+      <div><h3>Suno AI</h3><p>Create AI music</p></div>
+    </a>
+  </div>
+</section>
+
+<section class="section" id="games">
+  <h2 class="section-title">🎮 <span>Gaming</span> Zone</h2>
+  <div class="grid">
+    <a class="card" href="https://poki.com/" target="_blank" rel="noopener">
+      <span class="fallback">🎮</span>
+      <div><h3>Poki</h3><p>Play browser games</p></div>
+    </a>
+    <a class="card" href="https://www.crazygames.com/" target="_blank" rel="noopener">
+      <span class="fallback">🔥</span>
+      <div><h3>CrazyGames</h3><p>Fun online games</p></div>
+    </a>
+    <a class="card" href="https://www.chess.com/" target="_blank" rel="noopener">
+      <span class="fallback">♟️</span>
+      <div><h3>Chess.com</h3><p>Play chess online</p></div>
+    </a>
+    <a class="card" href="https://www.roblox.com/" target="_blank" rel="noopener">
+      <img src="https://cdn.simpleicons.org/roblox/FFFFFF" alt="Roblox">
+      <div><h3>Roblox</h3><p>Games & experiences</p></div>
+    </a>
+    <a class="card" href="https://www.minecraft.net/" target="_blank" rel="noopener">
+      <img src="https://cdn.simpleicons.org/minecraft/62B47A" alt="Minecraft">
+      <div><h3>Minecraft</h3><p>Build your world</p></div>
+    </a>
+    <a class="card" href="https://store.steampowered.com/" target="_blank" rel="noopener">
+      <img src="https://cdn.simpleicons.org/steam/FFFFFF" alt="Steam">
+      <div><h3>Steam</h3><p>Discover PC games</p></div>
+    </a>
+  </div>
+</section>
+
+<section class="section" id="web">
+  <h2 class="section-title">🚀 <span>Useful</span> Websites</h2>
+  <div class="grid">
+    <a class="card" href="https://www.google.com/" target="_blank" rel="noopener">
+      <img src="https://cdn.simpleicons.org/google/4285F4" alt="Google">
+      <div><h3>Google</h3><p>Search the web</p></div>
+    </a>
+    <a class="card" href="https://github.com/" target="_blank" rel="noopener">
+      <img src="https://cdn.simpleicons.org/github/FFFFFF" alt="GitHub">
+      <div><h3>GitHub</h3><p>Code & projects</p></div>
+    </a>
+    <a class="card" href="https://www.wikipedia.org/" target="_blank" rel="noopener">
+      <img src="https://cdn.simpleicons.org/wikipedia/FFFFFF" alt="Wikipedia">
+      <div><h3>Wikipedia</h3><p>Knowledge & learning</p></div>
+    </a>
+    <a class="card" href="https://translate.google.com/" target="_blank" rel="noopener">
+      <span class="fallback">🌍</span>
+      <div><h3>Google Translate</h3><p>Translate languages</p></div>
+    </a>
+    <a class="card" href="https://open.spotify.com/" target="_blank" rel="noopener">
+      <img src="https://cdn.simpleicons.org/spotify/1DB954" alt="Spotify">
+      <div><h3>Spotify</h3><p>Music & podcasts</p></div>
+    </a>
+    <a class="card" href="https://www.speedtest.net/" target="_blank" rel="noopener">
+      <span class="fallback">⚡</span>
+      <div><h3>Speedtest</h3><p>Test your internet</p></div>
+    </a>
+  </div>
+</section>
+
+<p class="empty" id="empty">ما لقينا حتى موقع بهاد الاسم. جرّب كلمة أخرى.</p>
+</main>
+
+<footer>
+  <div class="logo">👑 ADNAN<span>.</span></div>
+  Made with passion by <b>ADNAN</b> ✨<br>
+  © <span id="year"></span> ADNAN Social Hub — All rights reserved.
+</footer>
+
 <script>
-const form=document.getElementById('searchForm'),q=document.getElementById('q'),cards=[...document.querySelectorAll('.card')],none=document.getElementById('none');function filter(){let n=0;cards.forEach(c=>{let show=(c.dataset.key+' '+c.innerText).toLowerCase().includes(q.value.trim().toLowerCase());c.classList.toggle('hidden',!show);if(show)n++});none.classList.toggle('hidden',n>0)}form.addEventListener('submit',e=>{e.preventDefault();filter()});q.addEventListener('input',filter);
+const search = document.getElementById("search");
+const cards = [...document.querySelectorAll(".card")];
+const sections = [...document.querySelectorAll(".section")];
+const empty = document.getElementById("empty");
+
+search.addEventListener("input", function () {
+  const q = this.value.trim().toLowerCase();
+  let shown = 0;
+
+  cards.forEach(card => {
+    const match = card.innerText.toLowerCase().includes(q);
+    card.style.display = match ? "flex" : "none";
+    if (match) shown++;
+  });
+
+  sections.forEach(section => {
+    const visible = [...section.querySelectorAll(".card")]
+      .some(card => card.style.display !== "none");
+    section.style.display = visible ? "block" : "none";
+  });
+
+  empty.style.display = shown ? "none" : "block";
+});
+
+function updateClock() {
+  const now = new Date();
+  document.getElementById("clock").textContent =
+    now.toLocaleDateString("fr-MA") + " • " +
+    now.toLocaleTimeString("fr-MA");
+}
+updateClock();
+setInterval(updateClock, 1000);
+document.getElementById("year").textContent = new Date().getFullYear();
 </script>
 </body>
 </html>
