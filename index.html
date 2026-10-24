@@ -4,55 +4,51 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080b14">
 <title>ADNAN | Social Hub</title>
 <style>
-:root {
-  --bg:#080b14;
-  --card:#111827;
-  --blue:#38bdf8;
-  --purple:#8b5cf6;
-  --text:#f8fafc;
-  --muted:#94a3b8;
+:root{
+  --bg:#080b14;--card:#111827;--blue:#38bdf8;
+  --purple:#8b5cf6;--text:#f8fafc;--muted:#94a3b8;
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;scroll-padding-top:100px}
 body{
   margin:0;background:var(--bg);color:var(--text);
   font-family:Arial,sans-serif;
   background-image:radial-gradient(ellipse at top,#172554 0%,transparent 55%);
 }
 header{
-  position:sticky;top:0;z-index:10;
-  display:flex;justify-content:space-between;align-items:center;
-  gap:15px;padding:18px 7%;
-  background:#080b14eF;border-bottom:1px solid #25304a;
+  position:sticky;top:0;z-index:10;padding:17px 6%;
+  display:flex;justify-content:space-between;align-items:center;gap:15px;
+  background:#080b14ed;border-bottom:1px solid #25304a;
   backdrop-filter:blur(15px);
 }
-.logo{font-size:25px;font-weight:900;letter-spacing:2px}
+.logo{font-size:25px;font-weight:900;letter-spacing:2px;white-space:nowrap}
 .logo span{color:var(--blue)}
-nav{display:flex;gap:18px;flex-wrap:wrap}
+nav{display:flex;gap:16px;flex-wrap:wrap}
 nav a{color:#cbd5e1;text-decoration:none;font-size:14px}
 nav a:hover{color:var(--blue)}
-.hero{text-align:center;padding:75px 20px 40px}
+.hero{text-align:center;padding:70px 20px 35px}
 .tag{
-  display:inline-block;padding:8px 14px;border:1px solid #334155;
-  border-radius:30px;color:var(--blue);font-size:13px;
-  background:#0f172a;
+  display:inline-block;padding:9px 15px;border:1px solid #334155;
+  border-radius:30px;color:var(--blue);font-size:13px;background:#0f172a;
 }
 h1{font-size:clamp(38px,7vw,70px);margin:22px 0 12px}
 h1 span{
   background:linear-gradient(90deg,#38bdf8,#a78bfa);
   -webkit-background-clip:text;background-clip:text;color:transparent;
 }
-.hero p{color:var(--muted);line-height:1.8}
+.hero p{color:var(--muted);line-height:1.9}
+#clock{color:var(--blue);font-size:14px;margin:20px 0}
 .search{
-  display:block;width:min(550px,90%);margin:28px auto;
+  display:block;width:min(560px,92%);margin:25px auto;
   padding:16px 20px;border-radius:14px;border:1px solid #334155;
   background:#111827;color:white;font-size:16px;outline:none;
 }
 .search:focus{border-color:var(--blue);box-shadow:0 0 18px #38bdf833}
-.container{width:min(1100px,90%);margin:auto}
-.section{padding:30px 0 40px;scroll-margin-top:90px}
+.container{width:min(1120px,90%);margin:auto}
+.section{padding:30px 0 40px}
 .section-title{font-size:25px;margin-bottom:20px}
 .section-title span{color:var(--blue)}
 .grid{
@@ -60,38 +56,36 @@ h1 span{
   gap:17px;
 }
 .card{
-  display:flex;align-items:center;gap:15px;padding:20px;
+  display:flex;align-items:center;gap:14px;padding:19px;
+  min-height:100px;border:1px solid #243047;border-radius:18px;
   background:linear-gradient(145deg,#131c2e,#0d1320);
-  border:1px solid #243047;border-radius:18px;
-  text-decoration:none;color:white;transition:.25s;
-  min-height:100px;
+  color:white;text-decoration:none;transition:transform .2s,border-color .2s;
 }
 .card:hover{
   transform:translateY(-5px);border-color:var(--blue);
   box-shadow:0 8px 30px #38bdf81a;
 }
-.card img{width:42px;height:42px;object-fit:contain}
+.card img{width:42px;height:42px;object-fit:contain;flex-shrink:0}
 .fallback{
-  width:42px;height:42px;display:grid;place-items:center;
+  width:42px;height:42px;flex-shrink:0;display:grid;place-items:center;
   border-radius:12px;background:#1e293b;font-size:25px;
 }
-.card h3{margin:0 0 7px;font-size:17px}
-.card p{margin:0;color:var(--muted);font-size:12px}
+.card h3{margin:0 0 7px;font-size:16px}
+.card p{margin:0;color:var(--muted);font-size:12px;line-height:1.5}
+.empty{display:none;color:var(--muted);text-align:center;padding:25px}
 footer{
   text-align:center;padding:35px 15px;color:var(--muted);
   border-top:1px solid #202b40;margin-top:20px;line-height:2;
 }
 footer b{color:var(--blue)}
-.empty{display:none;color:var(--muted);padding:20px}
-#clock{color:var(--blue);font-size:14px;margin-top:20px}
 @media(max-width:600px){
-  header{padding:15px 5%;align-items:flex-start;flex-direction:column}
-  nav{gap:12px}
-  .hero{padding-top:48px}
+  header{padding:14px 5%;align-items:flex-start;flex-direction:column}
+  nav{gap:13px}
+  .hero{padding-top:45px}
   .grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
-  .card{padding:13px;gap:10px;min-height:90px}
+  .card{padding:12px;gap:9px;min-height:88px}
   .card img,.fallback{width:32px;height:32px}
-  .card h3{font-size:14px}
+  .card h3{font-size:13px}
   .card p{font-size:11px}
 }
 </style>
@@ -111,11 +105,12 @@ footer b{color:var(--blue)}
 <section class="hero">
   <div class="tag">⚡ YOUR DIGITAL WORLD</div>
   <h1>WELCOME TO <span>ADNAN</span></h1>
-  <p>كل المواقع اللي كتحتاج، مجموعة فبلاصة وحدة.<br>
+  <p>كل المواقع والألعاب اللي كتحتاج، مجموعة فبلاصة وحدة.<br>
   Your world. Your links. Your rules.</p>
   <div id="clock"></div>
   <input id="search" class="search" type="search"
-    placeholder="🔎 قلب على شي موقع، لعبة أو أداة..." autocomplete="off">
+    placeholder="🔎 قلب على موقع، لعبة أو أداة..."
+    aria-label="Search websites and games" autocomplete="off">
 </section>
 
 <main class="container">
@@ -171,7 +166,7 @@ footer b{color:var(--blue)}
     </a>
     <a class="card" href="https://claude.ai/" target="_blank" rel="noopener">
       <span class="fallback">🧠</span>
-      <div><h3>Claude</h3><p>AI writing & ideas</p></div>
+      <div><h3>Claude AI</h3><p>Writing & ideas</p></div>
     </a>
     <a class="card" href="https://www.perplexity.ai/" target="_blank" rel="noopener">
       <span class="fallback">🔍</span>
@@ -191,13 +186,21 @@ footer b{color:var(--blue)}
 <section class="section" id="games">
   <h2 class="section-title">🎮 <span>Gaming</span> Zone</h2>
   <div class="grid">
+    <a class="card" href="https://www.konami.com/efootball/" target="_blank" rel="noopener">
+      <span class="fallback">⚽</span>
+      <div><h3>PES / eFootball</h3><p>Official football game website</p></div>
+    </a>
+    <a class="card" href="https://ff.garena.com/" target="_blank" rel="noopener">
+      <span class="fallback">🔥</span>
+      <div><h3>Free Fire</h3><p>Official battle royale website</p></div>
+    </a>
     <a class="card" href="https://poki.com/" target="_blank" rel="noopener">
       <span class="fallback">🎮</span>
       <div><h3>Poki</h3><p>Play browser games</p></div>
     </a>
     <a class="card" href="https://www.crazygames.com/" target="_blank" rel="noopener">
       <span class="fallback">🔥</span>
-      <div><h3>CrazyGames</h3><p>Fun online games</p></div>
+      <div><h3>CrazyGames</h3><p>Online games</p></div>
     </a>
     <a class="card" href="https://www.chess.com/" target="_blank" rel="noopener">
       <span class="fallback">♟️</span>
@@ -248,49 +251,49 @@ footer b{color:var(--blue)}
   </div>
 </section>
 
-<p class="empty" id="empty">ما لقينا حتى موقع بهاد الاسم. جرّب كلمة أخرى.</p>
+<p class="empty" id="empty">ما لقينا حتى نتيجة. جرّب كلمة أخرى.</p>
 </main>
 
 <footer>
   <div class="logo">👑 ADNAN<span>.</span></div>
   Made with passion by <b>ADNAN</b> ✨<br>
-  © <span id="year"></span> ADNAN Social Hub — All rights reserved.
+  © <span id="year"></span> ADNAN Social Hub
 </footer>
 
 <script>
-const search = document.getElementById("search");
-const cards = [...document.querySelectorAll(".card")];
-const sections = [...document.querySelectorAll(".section")];
-const empty = document.getElementById("empty");
+const search=document.getElementById("search");
+const cards=[...document.querySelectorAll(".card")];
+const sections=[...document.querySelectorAll(".section")];
+const empty=document.getElementById("empty");
 
-search.addEventListener("input", function () {
-  const q = this.value.trim().toLowerCase();
-  let shown = 0;
+search.addEventListener("input",function(){
+  const q=this.value.trim().toLowerCase();
+  let shown=0;
 
-  cards.forEach(card => {
-    const match = card.innerText.toLowerCase().includes(q);
-    card.style.display = match ? "flex" : "none";
-    if (match) shown++;
+  cards.forEach(card=>{
+    const match=card.innerText.toLowerCase().includes(q);
+    card.style.display=match?"flex":"none";
+    if(match)shown++;
   });
 
-  sections.forEach(section => {
-    const visible = [...section.querySelectorAll(".card")]
-      .some(card => card.style.display !== "none");
-    section.style.display = visible ? "block" : "none";
+  sections.forEach(section=>{
+    const visible=[...section.querySelectorAll(".card")]
+      .some(card=>card.style.display!=="none");
+    section.style.display=visible?"block":"none";
   });
 
-  empty.style.display = shown ? "none" : "block";
+  empty.style.display=shown?"none":"block";
 });
 
-function updateClock() {
-  const now = new Date();
-  document.getElementById("clock").textContent =
-    now.toLocaleDateString("fr-MA") + " • " +
+function updateClock(){
+  const now=new Date();
+  document.getElementById("clock").textContent=
+    now.toLocaleDateString("fr-MA")+" • "+
     now.toLocaleTimeString("fr-MA");
 }
 updateClock();
-setInterval(updateClock, 1000);
-document.getElementById("year").textContent = new Date().getFullYear();
+setInterval(updateClock,1000);
+document.getElementById("year").textContent=new Date().getFullYear();
 </script>
 </body>
 </html>
