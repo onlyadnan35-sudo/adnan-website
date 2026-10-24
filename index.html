@@ -1,0 +1,113 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ADNAN V3</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial;background:#080d1b;color:white;min-height:100vh}
+header{padding:22px 8%;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #263149}
+.logo{font-size:27px;font-weight:bold;color:#65f0d0}
+button{cursor:pointer;border:0;border-radius:10px;padding:12px 18px;font-weight:bold}
+.btn{background:#65f0d0;color:#07131a}
+.hero{text-align:center;padding:75px 20px 45px}
+h1{font-size:clamp(35px,7vw,60px);margin:10px}
+h1 span{color:#65f0d0}
+p{color:#aab6cf;line-height:1.8}
+.cards{width:min(900px,90%);margin:30px auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:18px}
+.card,.panel{background:#111a2d;padding:24px;border:1px solid #27334a;border-radius:18px}
+.card{transition:.2s}
+.card:hover{transform:translateY(-5px);border-color:#65f0d0}
+.icon{font-size:35px}
+.panel{width:min(400px,90%);margin:30px auto}
+input{width:100%;padding:13px;margin:8px 0 14px;background:#080d1b;border:1px solid #35415a;border-radius:9px;color:white}
+label{display:block}
+.panel button{width:100%;margin-top:8px}
+.alt{background:#26334b;color:white}
+#status{overflow-wrap:anywhere}
+footer{text-align:center;padding:25px;border-top:1px solid #263149}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">ADNAN.</div>
+  <button class="btn" onclick="showLogin()">حسابي</button>
+</header>
+
+<section class="hero">
+  <p>✦ مرحباً بك في عالم ADNAN</p>
+  <h1>اكتشف <span>المستقبل</span></h1>
+  <p>التكنولوجيا، الإبداع، والأفكار الجديدة. كلشي كيبدا من هنا.</p>
+  <button class="btn" onclick="document.getElementById('account').scrollIntoView({behavior:'smooth'})">بدا دابا ←</button>
+</section>
+
+<div class="cards">
+  <div class="card"><div class="icon">🤖</div><h3>ADNAN AI</h3><p>أفكار وتجارب فالذكاء الاصطناعي.</p></div>
+  <div class="card"><div class="icon">🌐</div><h3>Web Design</h3><p>تصميم مواقع عصرية ومتجاوبة.</p></div>
+  <div class="card"><div class="icon">⚡</div><h3>Smart Tools</h3><p>أدوات رقمية لمشاريع المستقبل.</p></div>
+</div>
+
+<div class="panel" id="account">
+  <h2 id="title">إنشاء حساب</h2>
+  <p>دخل المعلومات ديالك باش تجرب الموقع.</p>
+  <form id="form">
+    <div id="namebox">
+      <label for="name">الاسم</label>
+      <input id="name" required maxlength="60" placeholder="الاسم ديالك">
+    </div>
+    <label for="email">البريد الإلكتروني</label>
+    <input id="email" type="email" required placeholder="name@example.com">
+    <label for="password">كلمة السر</label>
+    <input id="password" type="password" required minlength="6" placeholder="6 خانات على الأقل">
+    <button class="btn" id="submit">إنشاء حساب</button>
+  </form>
+  <button class="alt" onclick="switchMode()">تبديل بين التسجيل والدخول</button>
+  <button class="alt" onclick="logout()">تسجيل الخروج</button>
+  <p id="status" role="status"></p>
+</div>
+
+<footer>© 2026 ADNAN. جميع الحقوق محفوظة.</footer>
+
+<script>
+let mode = "signup";
+
+function switchMode(){
+  mode = mode === "signup" ? "login" : "signup";
+  document.getElementById("title").textContent =
+    mode === "signup" ? "إنشاء حساب" : "تسجيل الدخول";
+  document.getElementById("submit").textContent =
+    mode === "signup" ? "إنشاء حساب" : "دخول";
+  document.getElementById("namebox").hidden = mode === "login";
+  document.getElementById("name").required = mode === "signup";
+  document.getElementById("status").textContent = "";
+}
+
+function showLogin(){
+  document.getElementById("account").scrollIntoView({behavior:"smooth"});
+}
+
+document.getElementById("form").addEventListener("submit",function(e){
+  e.preventDefault();
+  const email = document.getElementById("email").value.trim();
+  const password = document.getElementById("password").value;
+  const status = document.getElementById("status");
+
+  // تجربة محلية فقط: الحسابات لا تُحفظ بشكل آمن.
+  if(mode === "signup"){
+    status.textContent =
+      "الواجهة خدامة! هاد التسجيل تجريبي فقط، ما كينش حساب حقيقي محفوظ.";
+  } else {
+    status.textContent =
+      "هاد نموذج تجريبي، خاص Backend باش يكون تسجيل الدخول حقيقي وآمن.";
+  }
+});
+
+function logout(){
+  document.getElementById("status").textContent =
+    "هاد النموذج ما فيهش جلسة دخول حقيقية.";
+}
+</script>
+</body>
+</html>
